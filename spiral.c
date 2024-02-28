@@ -20,7 +20,7 @@ int main(void)
 		}
 		else
 		{
-			comand_handle(buffer);
+			command_handle(buffer);
 		}
 		printf("$ ");
 	}
