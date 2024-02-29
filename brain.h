@@ -14,7 +14,7 @@ extern char **environ;
 int command_and_control(char *path, char **command);
 unsigned int tokenizer(char *str, char *delim);
 char **token_processing(char *str, char *delim);
-int command_handle(char* command);
+int command_handle(char *command);
 int path_handle(char *buffer);
 int free_memory(char **ptr);
 #endif /*BRAIN_H*/

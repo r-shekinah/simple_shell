@@ -12,7 +12,7 @@ int command_and_control(char *path, char **command_and_args)
 	int child_status, path_status, exe_status;
 	pid_t child_pid;
 	struct stat st;
-	
+
 	path_status = stat(path, &st);
 	if (path_status == 0)
 	{
