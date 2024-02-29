@@ -1,5 +1,5 @@
 # simple_shell
-ALX Simple Shell Project - : Muhammad Hasim, Riziki Shekinah
+ALX Simple Shell Project: Muhammad Hasim, Riziki Shekinah
 
 **Introducing Spiral: A Shell Project**
 
