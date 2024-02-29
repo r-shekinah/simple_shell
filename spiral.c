@@ -12,10 +12,16 @@ int main(void)
 	there_was_space = 0;
 
 	input_status = isatty(0);
-	while ((status = getline(&buffer, &count, stdin)) != EOF)
+	while (1)
 	{
 		if (input_status == 1)
 			printf("$ ");
+		status = getline(&buffer, &count, stdin);
+		if (status == EOF)
+		{
+			free(buffer);
+			break;
+		}
 		for (index = 0; *(buffer + index) != '\n'; index++)
 		{
 			if (*(buffer + index) == ' ' || *(buffer + index) == '\n')
@@ -37,7 +43,5 @@ int main(void)
 		if (input_status == 0)
 			break;
 	}
-	if (status == EOF)
-		free(buffer);
 	return (0);
 }
