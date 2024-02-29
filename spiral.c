@@ -12,10 +12,6 @@ int main(void)
 	there_was_space = 0;
 
 	input_status = isatty(0);
-	if (input_status == 1)
-	{
-		printf("$ ");
-	}
 	while ((status = getline(&buffer, &count, stdin)) != EOF)
 	{
 		if (input_status == 1)
