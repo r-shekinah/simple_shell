@@ -11,8 +11,6 @@ int non_stdin_handle(char *buffer)
 {
 	char **ret_path;
 	unsigned int index;
-	pid_t child_pid;
-	int child_status;
 
 	strtok(buffer, "\n");
 	ret_path = token_processing(buffer, " ");
