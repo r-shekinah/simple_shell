@@ -7,11 +7,12 @@
 int path_handle(char *buffer)
 {
 	char **ret_tokens;
+	int beacon;
 	char *path;
 
 	ret_tokens = token_processing(buffer, " ");
 	path = ret_tokens[0];
-	command_and_control(path, ret_tokens);
+	beacon = command_and_control(path, ret_tokens);
 	free_memory(ret_tokens);
-	return (0);
+	return (beacon);
 }

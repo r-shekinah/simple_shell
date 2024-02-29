@@ -17,4 +17,5 @@ char **token_processing(char *str, char *delim);
 int command_handle(char *command);
 int path_handle(char *buffer);
 int free_memory(char **ptr);
+int non_stdin_handle(char *buffer);
 #endif /*BRAIN_H*/
