@@ -40,9 +40,5 @@ int command_and_control(char *path, char **command_and_args)
 				return (-1);
 		}
 	}
-	if (path_status != 0)
-	{
-		return (-1);
-	}
-	return (0);
+	return (-1);
 }
