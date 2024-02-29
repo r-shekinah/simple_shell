@@ -18,5 +18,6 @@ int non_stdin_handle(char *buffer)
 	ret_path = token_processing(buffer, " ");
 	for (index = 0; *(ret_path + index) != NULL; index++)
 		path_handle(*(ret_path + index));
-	return (-1);
+	free_memory(ret_path);
+	return (0);
 }
