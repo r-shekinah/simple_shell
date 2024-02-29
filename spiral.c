@@ -18,6 +18,8 @@ int main(void)
 	}
 	while ((status = getline(&buffer, &count, stdin)) != EOF)
 	{
+		if (input_status == 1)
+			printf("$ ");
 		for (index = 0; *(buffer + index) != '\n'; index++)
 		{
 			if (*(buffer + index) == ' ' || *(buffer + index) == '\n')
@@ -38,7 +40,6 @@ int main(void)
 		}
 		if (input_status == 0)
 			break;
-		printf("$ ");
 	}
 	if (status == EOF)
 		free(buffer);
