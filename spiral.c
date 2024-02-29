@@ -6,8 +6,7 @@
 int main(void)
 {
 	char *buffer = NULL;
-	int status, index, input_status, path_status, child_status, there_was_space;
-	pid_t child_process;
+	int status, index, input_status, there_was_space;
 	size_t count;
 
 	there_was_space = 0;
