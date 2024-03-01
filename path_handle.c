@@ -4,15 +4,16 @@
  * @buffer: contains the path + command
  * Return: 0
  */
+
 int path_handle(char *buffer)
 {
 	char **ret_tokens;
-	int beacon;
-	char *path;
+	int beacon, ret;
 
 	ret_tokens = token_processing(buffer, " ");
-	path = ret_tokens[0];
-	beacon = command_and_control(path, ret_tokens);
+	ret = access(ret_tokens[0], F_OK);
+	if (ret == 0)
+		beacon = command_and_control(ret_tokens[0], ret_tokens);
 	free_memory(ret_tokens);
 	return (beacon);
 }
