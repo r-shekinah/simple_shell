@@ -27,7 +27,6 @@ int command_and_control(char *path, char **command_and_args)
 			exe_status = execve(path, command_and_args, environ);
 			if (exe_status == -1)
 			{
-				perror("Error: command does not exist");
 				return (-1);
 			}
 		}

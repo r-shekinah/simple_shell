@@ -12,7 +12,7 @@ char **token_processing(char *str, char *delim)
 	char *found;
 	char *temp;
 	char **buffer_arr;
-	int count;
+	int count, i, isequal, alloced, dont_add;
 
 	count = 0;
 	buffer = malloc(strlen(str) + 1);
@@ -27,7 +27,6 @@ char **token_processing(char *str, char *delim)
 		count++;
 		found = strtok(NULL, delim);
 	}
-
 	buffer_arr = malloc(sizeof(char *) * (count + 1));
 	if (buffer_arr == NULL)
 	{
@@ -36,13 +35,37 @@ char **token_processing(char *str, char *delim)
 	strcpy(buffer, str);
 	found = strtok(buffer, delim);
 	count = 0;
+	alloced = 0;
+	dont_add = 0;
 	while (found)
 	{
 		temp = malloc(strlen(found) + 1);
-		strcpy(temp, found);
-		buffer_arr[count] = temp;
+		if (count > 0)
+		{
+			for (i = 0; i < alloced; i++)
+			{
+				isequal = strcmp(buffer_arr[i], found);
+				if (isequal == 0)
+				{
+					dont_add = 1;
+					break;
+				}
+			}
+		}
+		if (dont_add == 1)
+		{
+			free(temp);
+			dont_add = 0;
+		}
+		else
+		{
+			strcpy(temp, found);
+			buffer_arr[count] = temp;
+			count++;
+			alloced++;
+		}
 		found = strtok(NULL, delim);
-		count++;
+	
 	}
 	buffer_arr[count] = NULL;
 	free(buffer);

@@ -11,7 +11,7 @@ int command_handle(char *command)
 	int index, beacon;
 	char **ret_tokens_path, **ret_tokens_command;
 
-	index = 0;
+	index = 1;
 	path_to_env = getenv("PATH");
 	dummy = malloc(sizeof(char) * strlen(path_to_env) + 1);
 	if (dummy == NULL)
