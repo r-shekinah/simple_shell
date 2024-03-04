@@ -9,7 +9,8 @@ int path_handle(char *buffer)
 {
 	char **ret_tokens;
 	int beacon, ret;
-
+	
+	beacon = 2;
 	ret_tokens = token_processing(buffer, " ");
 	ret = access(ret_tokens[0], F_OK);
 	if (ret == 0)
