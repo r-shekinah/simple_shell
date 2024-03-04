@@ -9,8 +9,6 @@ int main(void)
 	int status, index, input_status, there_was_space;
 	size_t count;
 
-	there_was_space = 0;
-
 	input_status = isatty(0);
 	while (1)
 	{
@@ -41,7 +39,10 @@ int main(void)
 			}
 		}
 		if (input_status == 0)
+		{
+			free(buffer);
 			break;
+		}
 	}
 	return (0);
 }
