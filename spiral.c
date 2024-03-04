@@ -64,6 +64,8 @@ int main(void)
 	{
 		status = getline(&buffer, &count, stdin);
 		non_interactive_handle(buffer);
+		free(buffer);
+		exit(EXIT_SUCCESS);
 	}
 	return (0);
 }
