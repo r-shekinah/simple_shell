@@ -33,8 +33,8 @@ int non_interactive_handle(char *buffer)
 			}
 			else
 				command_handle(buffer);
-			break;
 	}
+		break;
 	}
 	free(buffer);
 	return (0);
