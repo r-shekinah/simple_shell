@@ -45,5 +45,5 @@ int command_handle(char *command)
 	free_memory(ret_tokens_command);
 	free(path_and_command);
 	free(dummy);
-	return (0);
+	return (-1);
 }

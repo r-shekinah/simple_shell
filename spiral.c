@@ -6,7 +6,7 @@
 int main(void)
 {
 	char *buffer = NULL;
-	int status, isexit, index, input_status, there_was_space;
+	int status, isexit, index, input_status, there_was_space, beacon;
 	size_t count;
 
 	input_status = isatty(0);
@@ -39,10 +39,10 @@ int main(void)
 				{
 					if (*(buffer + index) == '/' || *(buffer + index) == '.')
 					{
-						path_handle(buffer);
+						beacon = path_handle(buffer);
 					}
 					else
-						command_handle(buffer);
+						beacon = command_handle(buffer);
 					break;
 				}
 			}
@@ -50,7 +50,10 @@ int main(void)
 		if (input_status == 0)
 		{
 			free(buffer);
-			break;
+			if (beacon == 0)
+				exit(EXIT_SUCCESS);
+			else
+				exit(EXIT_FAILURE);
 		}
 	}
 	return (0);
