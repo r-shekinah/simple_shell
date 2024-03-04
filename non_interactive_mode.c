@@ -21,7 +21,6 @@ int non_interactive_handle(char *buffer)
 			if (*(buffer + index) == '/' || *(buffer + index) == '.')
 			{
 				ret_tokens = token_processing(buffer,  " ");
-				index = 0;
 				while (*(ret_tokens + index) != NULL)
 				{
 					command_and_control(ret_tokens[index], ret_tokens);
@@ -33,8 +32,8 @@ int non_interactive_handle(char *buffer)
 			}
 			else
 				command_handle(buffer);
+			break;
 		}
-		break;
 	}
 	return (0);
 }
