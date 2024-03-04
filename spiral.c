@@ -6,7 +6,7 @@
 int main(void)
 {
 	char *buffer = NULL;
-	int status, isexit, isenv, env_index, index, input_status, there_was_space;
+	int status, isexit, index, input_status, there_was_space;
 	size_t count;
 	input_status = isatty(0);
 	if (input_status == 1)
@@ -17,14 +17,14 @@ int main(void)
 			status = getline(&buffer, &count, stdin);
 			strtok(buffer, "\n");
 			
-			isenv = strcmp(buffer, "env");
-			if (isenv == 0)
+			/*isenv = strcmp(buffer, "env");*/
+			/*if (isenv == 0)
 			{
 				for (env_index = 0; *(environ + env_index) != NULL; env_index++)
 				{
 					printf("%s\n", *(environ + env_index));
 				}
-			}
+			}*/
 			isexit = strcmp(buffer, "exit");
 			if (isexit == 0)
 			{
