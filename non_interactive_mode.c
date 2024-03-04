@@ -17,18 +17,24 @@ int non_interactive_handle(char *buffer)
 
 		if (space == 0)
 		{
-			ret_tokens = token_processing(buffer,  " ");
 			index = 0;
-			while (*(ret_tokens + index) != NULL)
+			if (*(buffer + index) == '/' || *(buffer + index) == '.')
 			{
-				command_and_control(ret_tokens[index], ret_tokens);
-				index++;
+				ret_tokens = token_processing(buffer,  " ");
+				index = 0;
+				while (*(ret_tokens + index) != NULL)
+				{
+					command_and_control(ret_tokens[index], ret_tokens);
+					index++;
+				}
+				free(buffer);
+				free_memory(ret_tokens);
+				return (0);
 			}
-			free(buffer);
-			free_memory(ret_tokens);
-			return (0);
-
-		}
+			else
+				command_handle(buffer);
+			break;
+	}
 	}
 	free(buffer);
 	return (0);
