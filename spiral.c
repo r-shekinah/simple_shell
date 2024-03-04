@@ -16,15 +16,6 @@ int main(void)
 			printf("$ ");
 			status = getline(&buffer, &count, stdin);
 			strtok(buffer, "\n");
-			
-			/*isenv = strcmp(buffer, "env");*/
-			/*if (isenv == 0)
-			{
-				for (env_index = 0; *(environ + env_index) != NULL; env_index++)
-				{
-					printf("%s\n", *(environ + env_index));
-				}
-			}*/
 			isexit = strcmp(buffer, "exit");
 			if (isexit == 0)
 			{
@@ -53,11 +44,6 @@ int main(void)
 					break;
 				}
 			}
-		/*if (input_status == 0)
-		{
-			status = getline(&buffer, &count, stdin);
-			non_interactive_handle(buffer);
-		}*/
 		}
 	}
 	if (input_status == 0)
