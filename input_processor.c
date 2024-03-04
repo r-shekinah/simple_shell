@@ -38,27 +38,10 @@ char **token_processing(char *str, char *delim)
 	while (found)
 	{
 		temp = malloc(strlen(found) + 1);
-		/*if (count > 0)
-		{
-			for (i = 0; i < alloced; i++)
-			{
-				isequal = strcmp(buffer_arr[i], found);
-				if (isequal == 0)
-				{
-					dont_add = 1;
-					break;
-				}
-			}
-		}
-		if (dont_add == 1)
-		{
-			free(temp);
-			dont_add = 0;
-		}*/
 		strcpy(temp, found);
 		buffer_arr[count] = temp;
-		count++;
 		found = strtok(NULL, delim);
+		count++;
 	
 	}
 	buffer_arr[count] = NULL;

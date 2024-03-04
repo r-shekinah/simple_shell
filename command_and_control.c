@@ -11,9 +11,8 @@ int command_and_control(char *path, char **command_and_args)
 {
 	int child_status, path_status, exe_status;
 	pid_t child_pid;
-	struct stat st;
 
-	path_status = stat(path, &st);
+	path_status = access(path, F_OK);
 	if (path_status == 0)
 	{
 		child_pid = fork();
@@ -38,6 +37,7 @@ int command_and_control(char *path, char **command_and_args)
 			else
 				return (-1);
 		}
+		return (0);
 	}
-	return (0);
+	return (-1);
 }
