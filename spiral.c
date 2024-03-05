@@ -15,7 +15,6 @@ int main(void)
 		{
 			printf("$ ");
 			status = getline(&buffer, &count, stdin);
-			strtok(buffer, "\n");
 			isexit = strcmp(buffer, "exit");
 			if (isexit == 0)
 			{
@@ -35,6 +34,8 @@ int main(void)
 					there_was_space = 0;
 				if (there_was_space == 0)
 				{
+					strtok(buffer, "\n");
+					index = 0;
 					if (*(buffer + index) == '/' || *(buffer + index) == '.')
 					{
 						path_handle(buffer);
