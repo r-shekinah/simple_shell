@@ -7,7 +7,6 @@ int non_interactive_handle(char *buffer)
 	int index, space;
 	char **ret_tokens;
 
-	strtok(buffer, "\n");
 	for (index = 0; *(buffer + index) != '\n'; index++)
 	{
 		if (*(buffer + index) == ' ' || *(buffer + index) == '\n')
@@ -20,6 +19,7 @@ int non_interactive_handle(char *buffer)
 			index = 0;
 			if (*(buffer + index) == '/' || *(buffer + index) == '.')
 			{
+				strtok(buffer, "\n");
 				ret_tokens = token_processing(buffer,  " ");
 				while (*(ret_tokens + index) != NULL)
 				{
