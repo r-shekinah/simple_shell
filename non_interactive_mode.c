@@ -26,7 +26,6 @@ int non_interactive_handle(char *buffer)
 					command_and_control(ret_tokens[index], ret_tokens);
 					index++;
 				}
-				free(buffer);
 				free_memory(ret_tokens);
 				return (0);
 			}
