@@ -32,9 +32,9 @@ int main(void)
 					there_was_space = 1;
 				else
 					there_was_space = 0;
+				strtok(buffer, "\n");
 				if (there_was_space == 0)
 				{
-					strtok(buffer, "\n");
 					index = 0;
 					if (*(buffer + index) == '/' || *(buffer + index) == '.')
 					{
