@@ -6,8 +6,8 @@
 int main(void)
 {
 	char *buffer = NULL;
-	int status, isexit, index, input_status, there_was_space;
-	size_t count;
+	int status, isexit, input_status, there_was_space, beacon;
+	size_t count, index;
 	input_status = isatty(0);
 	if (input_status == 1)
 	{
@@ -15,6 +15,7 @@ int main(void)
 		{
 			printf("$ ");
 			status = getline(&buffer, &count, stdin);
+			strtok(buffer, "\n");
 			isexit = strcmp(buffer, "exit");
 			if (isexit == 0)
 			{
@@ -26,23 +27,26 @@ int main(void)
 				free(buffer);
 				exit(EXIT_SUCCESS);
 			}
-			for (index = 0; *(buffer + index) != '\n'; index++)
+			for (index = 0; index < strlen(buffer); index++)
 			{
 				if (*(buffer + index) == ' ' || *(buffer + index) == '\n')
 					there_was_space = 1;
 				else
 					there_was_space = 0;
-				strtok(buffer, "\n");
 				if (there_was_space == 0)
 				{
-					index = 0;
 					if (*(buffer + index) == '/' || *(buffer + index) == '.')
 					{
-						path_handle(buffer);
+						beacon = path_handle(buffer);
+						if (beacon == 0)
+							break;
 					}
 					else
-						command_handle(buffer);
-					break;
+					{
+						beacon = command_handle(buffer);
+						if (beacon == 0)
+							break;
+					}
 				}
 			}
 		}
