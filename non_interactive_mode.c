@@ -4,8 +4,7 @@
 
 int non_interactive_handle(char *buffer)
 {
-	int index, space;
-	char **ret_tokens;
+	int index, space, beacon;
 
 	for (index = 0; *(buffer + index) != '\n'; index++)
 	{
@@ -17,17 +16,11 @@ int non_interactive_handle(char *buffer)
 		if (space == 0)
 		{
 			strtok(buffer, "\n");
-			index = 0;
 			if (*(buffer + index) == '/' || *(buffer + index) == '.')
 			{
-				ret_tokens = token_processing(buffer,  " ");
-				while (*(ret_tokens + index) != NULL)
-				{
-					command_and_control(ret_tokens[index], ret_tokens);
-					index++;
-				}
-				free_memory(ret_tokens);
-				return (0);
+				beacon = path_handle(buffer);
+				if (beacon == 0)
+					break;
 			}
 			else
 				command_handle(buffer);
