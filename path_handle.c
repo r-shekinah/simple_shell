@@ -8,12 +8,17 @@
 int path_handle(char *buffer)
 {
 	char **ret_tokens;
-	int beacon, ret;
+	int beacon, i, ret;
 
 	ret_tokens = token_processing(buffer, " ");
-	ret = access(ret_tokens[0], F_OK);
-	if (ret == 0)
-		beacon = command_and_control(ret_tokens[0], ret_tokens);
+	i = 0;
+	while (ret_tokens[i] != NULL)
+	{
+		ret = access(ret_tokens[i], F_OK);
+		if (ret == 0)
+			beacon = command_and_control(ret_tokens[i], ret_tokens);
+		i++;
+	}
 	free_memory(ret_tokens);
 	return (beacon);
 }
