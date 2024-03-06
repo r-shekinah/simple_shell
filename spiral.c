@@ -6,7 +6,7 @@
 int main(void)
 {
 	char *buffer = NULL;
-	int status, isexit, index, input_status, there_was_space, beacon;
+	int status, isexit, index, input_status, there_was_space;
 	size_t count;
 	input_status = isatty(0);
 	if (input_status == 1)
@@ -31,24 +31,20 @@ int main(void)
 				if (*(buffer + index) == ' ' || *(buffer + index) == '\n')
 					there_was_space = 1;
 				else
-				{
 					there_was_space = 0;
-					strtok(buffer, "\n");
-				}
+				strtok(buffer, "\n");
 				if (there_was_space == 0)
 				{
+					index = 0;
 					if (*(buffer + index) == '/' || *(buffer + index) == '.')
 					{
-						beacon = path_handle(buffer);
-						if (beacon == 0)
-							break;
+						path_handle(buffer);
 					}
-					if (*(buffer + index) != ' '  && *(buffer + index) != '/')
+					else
 						command_handle(buffer);
-					index++;
+					break;
 				}
 			}
-			free(buffer);
 		}
 	}
 	if (input_status == 0)
