@@ -12,6 +12,7 @@ int command_and_control(char *path, char **command_and_args)
 	int child_status, path_status, exe_status;
 	pid_t child_pid;
 
+
 	path_status = access(path, F_OK);
 	if (path_status == 0)
 	{
