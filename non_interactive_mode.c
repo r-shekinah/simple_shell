@@ -16,10 +16,10 @@ int non_interactive_handle(char *buffer)
 
 		if (space == 0)
 		{
+			strtok(buffer, "\n");
 			index = 0;
 			if (*(buffer + index) == '/' || *(buffer + index) == '.')
 			{
-				strtok(buffer, "\n");
 				ret_tokens = token_processing(buffer,  " ");
 				while (*(ret_tokens + index) != NULL)
 				{
